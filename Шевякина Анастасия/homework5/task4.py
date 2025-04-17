@@ -45,9 +45,16 @@ class Person:
         return Data(new_day, new_month, new_year)
 
     def when_end(self):
-        new_day = self.birth.day
+        new_day = self.birth.day - 1
         new_month = self.birth.month
         new_year = self.birth.year + 80
+        if new_day == 0:
+            if new_month == 1:
+                new_year -= 1
+                new_month = 12
+            else:
+                new_month -= 1
+            new_day = self.__months_length[new_month]
         age_80 = Data(new_day, new_month, new_year)
         if self.death < age_80:
             if self.death.day == 1:
