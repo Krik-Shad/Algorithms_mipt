@@ -140,31 +140,31 @@ void CalcGraph::set_data(const std::vector<Vertex*>& verts, const std::vector<Ed
     build_global_output_map();
 }
 
-int CalcGraph::num_inputs() const override
+int CalcGraph::num_inputs() const
 {
     return (int)graph_inputs.size();
 }
 
-void CalcGraph::set_input(int inp_idx, double inp_val) override
+void CalcGraph::set_input(int inp_idx, double inp_val)
 {
     if (inp_idx < 0 || inp_idx >= (int)graph_inputs.size())
         throw std::out_of_range("Input index out of range");
     graph_inputs[inp_idx] = inp_val;
 }
 
-int CalcGraph::num_outputs() const override
+int CalcGraph::num_outputs() const
 {
     return (int)graph_outputs.size();
 }
 
-double CalcGraph::get_output(int out_idx) override
+double CalcGraph::get_output(int out_idx)
 {
     if (out_idx < 0 || out_idx >= (int)graph_outputs.size())
         throw std::out_of_range("Output index out of range");
     return graph_outputs[out_idx];
 }
 
-void CalcGraph::calc_value() override
+void CalcGraph::calc_value()
 {
     for (size_t i = 0; i < graph_inputs.size(); ++i)
     {
@@ -193,75 +193,75 @@ void CalcGraph::calc_value() override
 }
 
 
-int PlusOperator::num_inputs() const override
+int PlusOperator::num_inputs() const
 {
     return 2;
 }
-void PlusOperator::set_input(int inp_idx, double inp_val) override
+void PlusOperator::set_input(int inp_idx, double inp_val)
 {
     if (inp_idx < 0 || inp_idx >= 2)
         throw std::out_of_range("Bad inp_idx in PlusOperator::set_input");
     input_value[inp_idx] = inp_val;
 }
-void PlusOperator::calc_value() override
+void PlusOperator::calc_value()
 {
     output_value = input_value[0] + input_value[1];
 }
-int PlusOperator::num_outputs() const override
+int PlusOperator::num_outputs() const
 {
     return 1;
 }
-double PlusOperator::get_output(int out_idx) override
+double PlusOperator::get_output(int out_idx)
 {
     if (out_idx != 0)
         throw std::out_of_range("Bad out_idx in PlusOperator::get_output");
     return output_value;
 }
 
-int MulOperator::num_inputs() const override
+int MulOperator::num_inputs() const
 {
     return 2;
 }
-void MulOperator::set_input(int inp_idx, double inp_val) override
+void MulOperator::set_input(int inp_idx, double inp_val)
 {
     if (inp_idx < 0 || inp_idx >= 2)
         throw std::out_of_range("inp_idx in MulOperator::set_input out of range");
     input_value[inp_idx] = inp_val;
 }
-void MulOperator::calc_value() override
+void MulOperator::calc_value()
 {
     output_value = input_value[0] * input_value[1];
 }
-int MulOperator::num_outputs() const override
+int MulOperator::num_outputs() const
 {
     return 1;
 }
-double MulOperator::get_output(int out_idx) override
+double MulOperator::get_output(int out_idx)
 {
     if (out_idx != 0)
         throw std::out_of_range("out_idx in MulOperator::get_output out of range");
     return output_value;
 }
 
-int MinusOperator::num_inputs() const override
+int MinusOperator::num_inputs() const
 {
     return 2;
 }
-void MinusOperator::set_input(int inp_idx, double inp_val) override
+void MinusOperator::set_input(int inp_idx, double inp_val)
 {
     if (inp_idx < 0 || inp_idx >= 2)
         throw std::out_of_range("Bad inp_idx in MinusOperator::set_input");
     input_value[inp_idx] = inp_val;
 }
-void MinusOperator::calc_value() override
+void MinusOperator::calc_value()
 {
     output_value = input_value[0] - input_value[1];
 }
-int MinusOperator::num_outputs() const override
+int MinusOperator::num_outputs() const
 {
     return 1;
 }
-double MinusOperator::get_output(int out_idx) override
+double MinusOperator::get_output(int out_idx)
 {
     if (out_idx != 0)
         throw std::out_of_range("Bad out_idx in MinusOperator::get_output");
