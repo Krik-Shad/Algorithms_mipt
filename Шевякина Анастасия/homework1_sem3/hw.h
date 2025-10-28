@@ -33,18 +33,18 @@ private:
     std::vector<std::pair<int, int>> global_output_map;
     std::vector<std::pair<int, int>> global_input_map;
 
-    bool topological_sort()
-    void calculate_graph_inputs()
-    void calculate_graph_outputs()
-    void build_global_input_map()
-    void build_global_output_map()
+    bool topological_sort();
+    void calculate_graph_inputs();
+    void calculate_graph_outputs();
+    void build_global_input_map();
+    void build_global_output_map();
 public:
-    void set_data(const std::vector<Vertex*>& verts, const std::vector<Edge>& edgs)
-    int num_inputs() const override
-    void set_input(int inp_idx, double inp_val) override
-    int num_outputs() const override
-    double get_output(int out_idx) override
-    void calc_value() override
+    void set_data(const std::vector<Vertex*>& verts, const std::vector<Edge>& edgs);
+    int num_inputs() const override;
+    void set_input(int inp_idx, double inp_val) override;
+    int num_outputs() const override;
+    double get_output(int out_idx) override;
+    void calc_value() override;
 
     ~CalcGraph()
     {
@@ -59,12 +59,11 @@ class PlusOperator : public Vertex
     double input_value[2] = { 0 };
     double output_value = 0.0;
 public:
-    int num_inputs() const override
-
-    void set_input(int inp_idx, double inp_val) override
-    void calc_value() override
-    int num_outputs() const override 
-    double get_output(int out_idx) override
+    int num_inputs() const override;
+    void set_input(int inp_idx, double inp_val) override;
+    void calc_value() override;
+    int num_outputs() const override ;
+    double get_output(int out_idx) override;
 };
 
 
@@ -75,23 +74,22 @@ private:
     double output_value = 0.0;
 
 public:
-    int num_inputs() const override
-    void set_input(int inp_idx, double inp_val) override
-    void calc_value() override
-    int num_outputs() const override
-    double get_output(int out_idx) override 
-}
+    int num_inputs() const override;
+    void set_input(int inp_idx, double inp_val) override;
+    void calc_value() override;
+    int num_outputs() const override;
+    double get_output(int out_idx) override;
+};
 
 class MinusOperator: public Vertex
 {
     double input_value[2] = { 0 };
     double output_value = 0.0;
 public:
-    int num_inputs() const override
-
-    void set_input(int inp_idx, double inp_val) override
-    void calc_value() override
-    int num_outputs() const override 
-    double get_output(int out_idx) override
+    int num_inputs() const override;
+    void set_input(int inp_idx, double inp_val) override;
+    void calc_value() override;
+    int num_outputs() const override; 
+    double get_output(int out_idx) override;
 };
 
